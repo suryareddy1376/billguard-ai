@@ -1,8 +1,13 @@
 import axios from 'axios'
 import { supabase } from './context/AuthContext'
 
+let base = import.meta.env.VITE_API_URL || '/api';
+if (base.startsWith('http') && !base.endsWith('/api')) {
+  base = base.replace(/\/$/, '') + '/api';
+}
+
 const api = axios.create({ 
-  baseURL: import.meta.env.VITE_API_URL || '/api', 
+  baseURL: base, 
   timeout: 30000 
 })
 
