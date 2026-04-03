@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+asyncpg
+supabase
+python-multipart
+requests
+pydantic
+python-dotenv
+httpx
+pytesseract
+pillow
+python-Levenshtein
+thefuzz
