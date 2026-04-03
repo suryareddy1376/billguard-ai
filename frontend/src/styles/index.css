@@ -216,8 +216,37 @@ select option { background: var(--bg-surface); }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
 .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+/* Mobile and Tablet Breakpoints */
+@media (max-width: 900px) {
+  .grid-4 { grid-template-columns: 1fr 1fr; }
+}
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  
+  /* Make navbar auto-height and wrap its contents smoothly */
+  .navbar { height: auto; padding: 0.5rem 0; }
+  .navbar-inner { flex-wrap: wrap; justify-content: center; gap: 0.6rem; }
+  .navbar-nav { overflow-x: auto; padding-bottom: 2px; justify-content: flex-start; max-width: 100vw; }
+  .nav-link { white-space: nowrap; font-size: 0.8rem; padding: 0.35rem 0.6rem; }
+  
+  /* Push page content down further because navbar is taller */
+  .page { padding-top: 110px; }
+  .container { padding: 0 1rem; }
+  
+  /* Typography scale-down */
+  h1 { font-size: 1.7rem; }
+  h2 { font-size: 1.3rem; }
+  h3 { font-size: 1.05rem; }
+  
+  /* Smaller gaps & paddings for mobile screens */
+  .card { padding: 1.25rem; }
+  .upload-zone { padding: 2rem 1rem; }
+  .item-card-header { flex-direction: column; align-items: stretch; gap: 0.5rem; }
+  .btn { padding: 0.55rem 1rem; }
+  
+  /* Let flex-between wrap gracefully */
+  .flex-between { flex-wrap: wrap; gap: 1rem; }
 }
 
 /* ── Stat card ───────────────────────────────────────────── */
