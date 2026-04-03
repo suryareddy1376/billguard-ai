@@ -23,6 +23,13 @@ supabase_client: Client | None = None
 if SUPABASE_URL and SUPABASE_KEY:
     supabase_client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
+import ssl
+
+# Define SSL context to accept the connection when SSL is enforced
+ssl_ctx = ssl.create_default_context()
+ssl_ctx.check_hostname = False
+ssl_ctx.verify_mode = ssl.CERT_NONE
+
 # Postgres Connection pooling via asyncpg
 engine = create_async_engine(
     DB_URL,
@@ -32,7 +39,8 @@ engine = create_async_engine(
     pool_pre_ping=True,
     connect_args={
         "prepared_statement_cache_size": 0,
-        "statement_cache_size": 0
+        "statement_cache_size": 0,
+        "ssl": ssl_ctx
     }
 )
 
