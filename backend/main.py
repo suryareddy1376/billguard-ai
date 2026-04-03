@@ -47,13 +47,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-import os as _os
-_ALLOWED_ORIGINS = _os.getenv("ALLOWED_ORIGINS", "*").split(",")
-
+# Use permissive CORS for the hackathon to avoid 400 Bad Request preflight errors
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=_ALLOWED_ORIGINS,
-    allow_credentials=True,
+    allow_origins=["*"],
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
